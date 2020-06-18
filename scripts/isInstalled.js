@@ -1,12 +1,9 @@
 const fs = require('fs');
 const config = require('./config');
 
-const appDir = config.appDir + '/LowYat';
-const settingsGradlePath = appDir + '/android/settings.gradle';
-
-// console.log('settingsGradlePath=' + settingsGradlePath);
-
-function forAndroid() {
+function forAndroid(packageName) {
+  const settingsGradlePath = config.appDir + '/' + packageName + '/android/settings.gradle';
+  console.log('settingsGradlePath=' + settingsGradlePath);
   const installPattern = new RegExp(`(include)\\s\\\':${config.commonModuleName}\\\'`);
   const settingsGradle = fs.readFileSync(settingsGradlePath);
   return installPattern.test(settingsGradle);

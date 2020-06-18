@@ -3,11 +3,12 @@ const fs = require('fs');
 const config = require('./config');
 const isInstalled = require('./isInstalled');
 
-const appDir = config.appDir + '/LowYat';
-// console.log('appDir='+appDir)
+const packageName = process.argv[2];
+const appDir = config.appDir + '/' + packageName;
+console.log('appDir='+appDir);
 const manifest = require(path.join(appDir, 'package.json'));
 
-if (!isInstalled.forAndroid()) {
+if (!isInstalled.forAndroid(packageName)) {
   // Android register common project
   // TODO: it would be nicer if react-native link has support for multi projects itself
   // Please vote:
