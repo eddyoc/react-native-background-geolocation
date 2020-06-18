@@ -3,7 +3,8 @@ const fs = require('fs');
 const config = require('./config');
 const isInstalled = require('./isInstalled');
 
-const appDir = config.appDir;
+const appDir = config.appDir + '/LowYat';
+// console.log('appDir='+appDir)
 const manifest = require(path.join(appDir, 'package.json'));
 
 if (!isInstalled.forAndroid()) {
