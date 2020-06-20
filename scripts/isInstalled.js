@@ -1,11 +1,10 @@
+
 const fs = require('fs');
 const config = require('./config');
 
-function forAndroid(packageName) {
-  const settingsGradlePath = config.appDir + '/' + packageName + '/android/settings.gradle';
-  console.log('settingsGradlePath=' + settingsGradlePath);
+function forAndroid() {
   const installPattern = new RegExp(`(include)\\s\\\':${config.commonModuleName}\\\'`);
-  const settingsGradle = fs.readFileSync(settingsGradlePath);
+  const settingsGradle = fs.readFileSync(config.settingsGradlePath);
   return installPattern.test(settingsGradle);
 }
 
